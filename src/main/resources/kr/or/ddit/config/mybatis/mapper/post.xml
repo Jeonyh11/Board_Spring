@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+	<mapper namespace="jpost">
+
+		<select id="selectAllPost" resultType="postVo" parameterType="String">
+			SELECT * FROM jpost WHERE board_no = #{value}
+		</select>
+
+
+		<select id="selectPost" resultType="postVo" parameterType="String">
+			SELECT * FROM jpost WHERE p_no = #{value}
+		</select>
+	
+		<select id="selectPagingPost" resultType="postVo"
+									 parameterType="pageVo">
+		SELECT *
+		FROM
+		    (SELECT ROWNUM rn, a.*
+		     FROM (SELECT * FROM jpost WHERE board_no = #{board_no} ORDER BY p_reg_dt DESC) a
+		     WHERE ROWNUM &lt;= #{page} * #{pageSize})
+		WHERE rn BETWEEN (#{page}-1) * #{pageSize}+1 AND #{page} * #{pageSize}
+		</select>
+	
+	
+	<select id="PostCnt" resultType="int">
+		SELECT COUNT(*) cnt FROM jpost 
+	</select>
+	
+		<insert id="insertPost" parameterType="postVo">
+		INSERT INTO jpost 
+		VALUES (jpost_seq.nextval, #{p_title}, #{p_ct}, #{p_reg_dt}, null, null, null, #{userid}, null, #{board_no})
+		</insert>
+	
+		<update id="updatePost" parameterType="postVo">
+		UPDATE jboard SET board_st = #{board_st}
+		WHERE board_nm = #{board_nm}
+		</update>
+	
+	
+	</mapper>
