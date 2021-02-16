@@ -24,8 +24,8 @@
 	
 </head>
 <form id="frm" action ="${cp }/postControll/detailView">
-	<input type ="hidden" id="pnumber" name="pnumber" value="">
 	<input type ="hidden" id="board_no" name="board_no" value="${board_no}">
+	<input type ="hidden" id="pnumber" name="pnumber" value="">
 </form>
 
 <form id="frm2" action="${cp}/postControll/regist">

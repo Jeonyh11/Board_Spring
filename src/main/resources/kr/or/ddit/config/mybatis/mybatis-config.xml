@@ -9,6 +9,8 @@
       <typeAlias type="kr.or.ddit.model.PageVo" alias = "pageVo"/>
       <typeAlias type="kr.or.ddit.model.PostVo" alias = "postVo"/>
       <typeAlias type="kr.or.ddit.model.BoardVo" alias = "boardVo"/>
+      <typeAlias type="kr.or.ddit.model.JfileVo" alias = "jfileVo"/>
+      <typeAlias type="kr.or.ddit.model.JcommentVo" alias = "jcommentVo"/>
    </typeAliases>
 
 
@@ -16,5 +18,7 @@
        <mapper resource="kr/or/ddit/config/mybatis/mapper/users.xml"/>
        <mapper resource="kr/or/ddit/config/mybatis/mapper/board.xml"/>
        <mapper resource="kr/or/ddit/config/mybatis/mapper/post.xml"/>
+       <mapper resource="kr/or/ddit/config/mybatis/mapper/jfile.xml"/>
+       <mapper resource="kr/or/ddit/config/mybatis/mapper/jcomment.xml"/>
      </mappers>
 </configuration>

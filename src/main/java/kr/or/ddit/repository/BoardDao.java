@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -34,5 +33,12 @@ public class BoardDao implements BoardDaoI{
 
 		return template.insert("jboard.insertBoard", boardVo);
 	}
+
+	@Override
+	public int updateBoard(BoardVo boardVo) {
+		
+		return template.update("jboard.updateBoard", boardVo);
+	}
+	
 
 }

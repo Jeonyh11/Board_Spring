@@ -9,29 +9,29 @@
 
 <script>
     $(function() {
-       $('#sujeong').on('click',function(){
-    	   $('#frm').submit();
-       })
+    // 수정버튼을 눌렀을 경우
+		$('#sujeong').on('click',function() {
+			$('#frm').attr("method", "GET");
+			$('#frm').attr("action", "${cp}/postControll/sujeong");
+			$('#frm').submit();
+		});
+		// 삭제버튼을 눌렀을 경우
+		$('#sackjae').on('click',function() {
+			$('#frm').attr("method", "POST");
+			$('#frm').attr("action", "${cp}/postControll/sackjae");
+			$('#frm').submit();
+		});
    });
 </script>
-
+	<br><br><br>
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 					
-				<form class="form-horizontal" id ="frm" role="form" action="<%=request.getContextPath() %>/postModify"
-				 		method="POST" enctype="multipart/form-data">
+				<form class="form-horizontal" id ="frm" role="form"
+				 		 enctype="multipart/form-data">
 				 		
 				 	<input type="hidden" id="userid" name="userid" value="${S_USER.userid }">
-					
+					<input type="hidden" id="board_no" name="board_no" value="${postVo.board_no }">
 					<input type="hidden" id="p_no" name="p_no" value="${postVo.p_no }">
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="userNm" class="col-sm-3 control-label">제목</label> -->
-<!-- 						<div class="col-sm-4"> -->
-				
-<!-- 							<input type="text" class="form-control" id="title" name="title"  -->
-<!-- 												placeholder="제목을 입력하시오" > -->
-																			
-<!-- 						</div>	 -->
-<!-- 					</div> -->
 					
 					
 					<div class="form-group">
@@ -39,16 +39,17 @@
 											제목
 										</label>
 										<div class="col-sm-7">
+										<input type="hidden" id="p_title" name="p_title" value="${postVo.p_title }">
 											<span class="input-group-append-sm" id="title">${postVo.p_title }</span>
 										</div>
 									</div>
-					
 					
 					<br>
 					
 					<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">글 내용</label>
 						<div class="col-sm-7">
+						<input type="hidden" id="p_ct" name="p_ct" value="${postVo.p_ct }">
 						<span class="input-group-append-sm" id="comment">${postVo.p_ct }</span>
 						</div>						
 					</div>
@@ -56,7 +57,8 @@
 					<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">첨부 파일</label>
 					<div class="col-sm-4">
-						<span class="input-group-append-sm" id=""></span>
+						<input type="hidden" id="filename" name="filename" value="${postVo.p_ct }">
+						<span class="input-group-append-sm" id="">${jfVo.filename }</span>
 					</div>
 					</div>	
 					

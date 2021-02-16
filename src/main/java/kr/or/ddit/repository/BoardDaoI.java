@@ -13,4 +13,6 @@ public interface BoardDaoI {
 	BoardVo selectBoard(String board_no);
 	
 	int insertBoard(BoardVo boardVo);
+	
+	int updateBoard(BoardVo boardVo);
 }

@@ -21,13 +21,14 @@
 
 
 							<c:forEach items ="${boardList}" var ="jboard">
-						<div >
+							<c:if test="${jboard.board_st==1}">
+							  <div >
 								<a href="${cp }/postControll/pagingView?board_no=${jboard.board_no}&page=1"
-								 	class="board">${jboard.board_nm} </a>
+								 	class="board"> ${jboard.board_nm} </a>
 								<br><br>
-						</div>
+							  </div>
+							</c:if>													
 							</c:forEach>
-											
 					</div>
 				</div>
 

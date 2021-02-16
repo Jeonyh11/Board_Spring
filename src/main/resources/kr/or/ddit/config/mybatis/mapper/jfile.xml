@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+	<mapper namespace="jfile">
+		<insert id="insertJfile" parameterType="jfileVo">
+			INSERT INTO jfile VALUES 
+				(#{filename}, #{p_no}, f_no_seq.nextval, #{realfilename})
+		</insert>
+	
+		<select id="selectJfile" resultType="jfileVo">
+			SELECT * FROM jfile WHERE p_no = #{p_no} 
+		</select>
+		
+		<delete id="delete" parameterType="String">
+			DELETE FROM jfile WHERE p_no = #{p_no}
+		</delete>
+		
+		<update id="update" parameterType="jfileVo">
+			UPDATE jfile SET filename= #{filename} WHERE p_no = #{p_no}
+		</update>
+	</mapper>

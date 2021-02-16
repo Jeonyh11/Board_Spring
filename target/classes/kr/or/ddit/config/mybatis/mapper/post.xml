@@ -39,5 +39,16 @@
 		WHERE board_nm = #{board_nm}
 		</update>
 	
+		<select id="MaxPno" resultType="int">
+			SELECT MAX(p_no) FROM jpost
+		</select>
+		
+		<delete id="delete" parameterType="String">
+			DELETE FROM jpost WHERE p_no = #{p_no}
+		</delete>
+		
+		<update id="update" parameterType="postVo">
+			UPDATE jpost SET p_title = #{p_title}, p_ct = #{p_ct} WHERE p_no = #{p_no}
+		</update>
 	
 	</mapper>

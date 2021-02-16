@@ -9,7 +9,6 @@ public class PostVo {
 	private String p_title;
 	private String p_ct;
 	private String p_re_ct;
-	private Date p_re_reg_dt;
 	private String p_del;
 	private String userid;
 	private String p_re_no;
@@ -33,6 +32,9 @@ public class PostVo {
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date p_reg_dt;
+	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date p_re_reg_dt;
 
 	public String getP_no() {
 		return p_no;
@@ -70,6 +72,7 @@ public class PostVo {
 		return p_re_reg_dt;
 	}
 
+	
 	public void setP_re_reg_dt(Date p_re_reg_dt) {
 		this.p_re_reg_dt = p_re_reg_dt;
 	}

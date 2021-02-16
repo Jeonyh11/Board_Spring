@@ -13,7 +13,9 @@
 
 <script>
     $(function() {
-        $('#summernote').summernote();	
+        $('#summernote').summernote({
+        	minHeight: 250
+        });	
    });
 </script>
 
@@ -21,7 +23,7 @@
 	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 					
 				<form class="form-horizontal" id ="frm" role="form"
-							 action="${cp }/registPost"
+							 action="${cp }/postControll/registed"
 				 		method="POST" enctype="multipart/form-data">
 				 		
 				 	<input type="hidden" id="userid" name="userid" value="${S_USER.userid }">
@@ -30,7 +32,7 @@
 						<label for="userNm" class="col-sm-3 control-label">제목</label>
 						<div class="col-sm-4">
 				
-							<input type="text" class="form-control" id="title" name="title" 
+							<input type="text" class="form-control" id="title" name="p_title" 
 												placeholder="제목을 입력하시오" >
 																			
 						</div>	
@@ -41,14 +43,14 @@
 					<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">글 내용</label>
 						<div class="col-sm-7">
-						<textarea id="summernote" name="summernote"></textarea>
+						<textarea id="summernote" name="p_ct"></textarea>
 						</div>						
 					</div>
 					
 					<div class="form-group">
 					<label for="userNm" class="col-sm-2 control-label">첨부 파일</label>
 					<div class="col-sm-4">
-						 <input type="file" class="form-control" name="profile"/>
+						 <input type="file" class="form-control" name="file"/>
 					</div>
 					</div>	
 	

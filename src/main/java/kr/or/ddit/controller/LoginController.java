@@ -5,6 +5,9 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +21,7 @@ import kr.or.ddit.service.UserServiceI;
 @Controller
 @RequestMapping("login")
 public class LoginController {
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Resource(name="userService")
 	private UserServiceI userService;
@@ -39,6 +43,32 @@ public class LoginController {
 		
 		return "tiles.main.management";
 	}
+	
+	@RequestMapping(path="fix", method= {RequestMethod.POST})
+	public String FixView(String board_nm, HttpServletRequest request) {
+		
+		String[] select = request.getParameterValues("choice");
+		
+		BoardVo boardVo = new BoardVo();
+		String st ="";
+		for(String state : select) {
+			 st = state;
+		}
+		System.out.println(st);
+		
+		boardVo.setBoard_st(st);
+		boardVo.setBoard_nm(board_nm);
+		logger.debug("boardnm: {}", board_nm);
+		
+		int success = boardService.updateBoard(boardVo);
+		
+		if(success == 1) {
+			return "redirect:/login/manager";
+		}else {
+			return "redirect:/login/manager";
+		}
+	}
+	
 	
 	@RequestMapping("create")
 	public String Create(String board_nm, String choice) {
